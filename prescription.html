@@ -8,7 +8,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            // আপনার Public Key বসানো হয়েছে
             emailjs.init("_Oe3hEYOfYM2nwF_R"); 
         })();
     </script>
@@ -189,12 +188,10 @@
         <h1>প্রেসক্রিপশন পাঠান</h1>
         <p>আপনার তথ্য দিয়ে আমাদের বার্তা পাঠান।</p>
 
-        <!-- সাকসেস মেসেজ বক্স -->
         <div id="successMessage" class="success-message">
             ✅ আপনার তথ্যটি সফলভাবে আমাদের কাছে পৌঁছেছে! আমরা খুব দ্রুত আপনার সাথে যোগাযোগ করব।
         </div>
 
-        <!-- প্রেসক্রিপশন ফরম -->
         <form id="prescriptionForm">
             <div class="form-group">
                 <label for="name">আপনার নাম:</label>
@@ -237,7 +234,8 @@
             submitBtn.innerText = 'পাঠানো হচ্ছে...';
             submitBtn.disabled = true;
 
-            emailjs.sendForm('service_meyf7ms', 'template_qumfdbq', this)
+            // নতুন সার্ভিস আইডি সঠিকভাবে বসানো হয়েছে
+            emailjs.sendForm('service_rwu2frp', 'template_qumfdbq', this)
                 .then(function() {
                     form.style.display = 'none';
                     successMsg.style.display = 'block';
