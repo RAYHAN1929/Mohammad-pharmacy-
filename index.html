@@ -1,4 +1,28 @@
-0
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="মোহাম্মদ ফার্মেসী - রহিম নগর">
+    <link rel="icon" href="favicon.ico">
+    <title>মোহাম্মদ ফার্মেসী - আপনার বিশ্বস্ত স্বাস্থ্যসেবা</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #00a86b;
+            --secondary-color: #004d40;
+            --light-bg: #f4fbf7;
+            --white: #ffffff;
+            --text-color: #333333;
+        }
+
         body {
             background-color: var(--light-bg);
             color: var(--text-color);
@@ -25,7 +49,7 @@
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
+            font-weight: 800 !important;
             color: var(--primary-color);
             display: flex;
             align-items: center;
@@ -51,7 +75,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 168, 107, 0.8), rgba(0, 77, 64, 0.8)), url('https://images.unsplash.com/photo-1576602976047-174e57a47881?auto=format&fit=crop&q=80&w=1000') center/cover;
+            background: linear-gradient(rgba(0, 168, 107, 0.8), rgba(0, 77, 64, 0.8)), url('https://images.unsplash.com/photo-1576602976047-174e57a47881?auto=format&fit=crop&w=1000') center/cover;
             color: var(--white);
             text-align: center;
             padding: 80px 20px;
@@ -83,7 +107,7 @@
             color: var(--white);
         }
 
-        /* Container Section */
+        /* Container & Grid */
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -97,7 +121,6 @@
             font-size: 2rem;
         }
 
-        /* Services Section */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -122,7 +145,6 @@
             margin-bottom: 10px;
         }
 
-        /* Contact & Info Section */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -158,7 +180,6 @@
             margin-top: 50px;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -172,12 +193,9 @@
 </head>
 <body>
 
-    <!-- Header / Navbar -->
     <header>
         <nav>
-            <div class="logo">
-                💊 মোহাম্মদ ফার্মেসী
-            </div>
+            <div class="logo">💊 মোহাম্মদ ফার্মেসী</div>
             <ul class="nav-links">
                 <li><a href="#home">হোম</a></li>
                 <li><a href="#services">সেবাসমূহ</a></li>
@@ -187,60 +205,54 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section id="home" class="hero">
         <h1>মোহাম্মদ ফার্মেসীতে আপনাকে স্বাগতম</h1>
         <p>১০০% আসল ঔষধ ও সঠিক স্বাস্থ্যসেবার বিশ্বস্ত প্রতিষ্ঠান</p>
-        <a href="#contact" class="btn">এখনই যোগাযোগ করুন</a>
+        <a href="#contact" class="btn">এখনি যোগাযোগ করুন</a>
     </section>
 
-    <!-- Services Section -->
-    <div class="container" id="services">
-        <h2 class="section-title">আমাদের সেবাসমূহ</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>আসল ঔষধ</h3>
-                <p>আমরা সরাসরি অনুমোদিত প্রস্তুতকারকদের থেকে আসল ও মানসম্মত ঔষধ সরবরাহ করি।</p>
+    <div class="container">
+        <section id="services">
+            <h2 class="section-title">আমাদের সেবাসমূহ</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>আসল ঔষধ</h3>
+                    <p>আমরা সরাসরি অনুমোদিত প্রস্তুতকারকদের থেকে আসল ও মানসম্মত ঔষধ সরবরাহ করি।</p>
+                </div>
+                <div class="service-card">
+                    <h3>প্রেসক্রিপশন সেবা</h3>
+                    <p>অভিজ্ঞ ফার্মাসিস্ট দ্বারা প্রেসক্রিপশন অনুযায়ী নিখুঁতভাবে ঔষধ প্রদান করা হয়।</p>
+                </div>
+                <div class="service-card">
+                    <h3>প্রেসার ও ডায়াবেটিস মাপা</h3>
+                    <p>আমাদের ফার্মেসীতে নিয়মিত ব্লাড প্রেসার ও ডায়াবেটিস পরীক্ষার সুবিধা রয়েছে।</p>
+                </div>
+                <div class="service-card">
+                    <h3>হোম ডেলিভারি</h3>
+                    <p>জরুরি প্রয়োজনে কল করে ঘরে বসেই ঔষধ পাওয়ার বিশেষ সুবিধা।</p>
+                </div>
             </div>
-            <div class="service-card">
-                <h3>প্রেসক্রিপশন সেবা</h3>
-                <p>অভিজ্ঞ ফার্মাসিস্ট দ্বারা প্রেসক্রিপশন অনুযায়ী নিখুঁতভাবে ঔষধ প্রদান করা হয়।</p>
+        </section>
+
+        <section id="contact">
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>যোগাযোগ ও স্থান</h3>
+                    <p>📍 <strong>ঠিকানা:</strong> রহিমানগর দক্ষিণ বাজার, কচুয়া রোড</p>
+                    <p>📞 <strong>মোবাইল:</strong> +88 01835241929</p>
+                    <p>✉️ <strong>ইমেইল:</strong> mr77251519@gmail.com</p>
+                </div>
+                <div class="info-box">
+                    <h3>খোলা থাকার সময়সূচী</h3>
+                    <p>🕒 <strong>প্রতিদিন:</strong> সকাল ৮:০০ - রাত ১১:০০</p>
+                </div>
             </div>
-            <div class="service-card">
-                <h3>প্রেসার ও ডায়াবেটিস মাপার ব্যবস্থা</h3>
-                <p>আমাদের ফার্মেসীতে নিয়মিত ব্লাড প্রেসার ও ডায়াবেটিস পরীক্ষার সুবিধা রয়েছে।</p>
-            </div>
-            <div class="service-card">
-                <h3>হোম ডেলিভারি</h3>
-                <p>জরুরি প্রয়োজনে কল করে ঘরে বসেই ঔষধ পাওয়ার বিশেষ সুবিধা।</p>
-            </div>
-        </div>
+        </section>
     </div>
 
-    <!-- Contact & Info Section -->
-    <div class="container" id="contact">
-        <h2 class="section-title">যোগাযোগ ও সময়সূচী</h2>
-        <div class="info-grid">
-            <div class="info-box">
-                <h3>ঠিকানা ও স্থান</h3>
-                <p>📍 <strong>ঠিকানা:</strong> রহিমানগর দক্ষিণ বাজার,পনশাহী রোড</p>
-                <p>📞 <strong>মোবাইল:</strong> +88 01835241929</p>
-                <p>✉️ <strong>ইমেইল:</strong> mr77251519@gmail.com</p>
-            </div>
-            <div class="info-box">
-                <h3>খোলা থাকার সময়সূচী</h3>
-                <p>🕒 <strong>প্রতিদিন :</strong> সকাল ৮:০০ - রাত ১১:০০</p>
-                
-                
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
     <footer>
         <p>&copy; ২০২৬ মোহাম্মদ ফার্মেসী। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
 
 </body>
 </html>
-
