@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>প্রেসক্রিপশন পাঠান - মোহাম্মদ ফার্মেসী</title>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // আপনার Public Key বসানো হয়েছে
+            emailjs.init("_Oe3hEYOfYM2nwF_R"); 
+        })();
+    </script>
     <style>
         * {
             margin: 0;
@@ -26,7 +34,6 @@
             line-height: 1.6;
         }
 
-        /* Header & Nav */
         header {
             background-color: var(--white);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -63,7 +70,6 @@
             font-weight: 500;
         }
 
-        /* Upload Container */
         .upload-container {
             max-width: 600px;
             margin: 40px auto;
@@ -122,10 +128,21 @@
             background-color: var(--secondary-color);
         }
 
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
         .whatsapp-divider {
             text-align: center;
             margin: 25px 0 15px 0;
-            position: relative;
         }
 
         .whatsapp-btn {
@@ -169,47 +186,68 @@
     </header>
 
     <div class="upload-container">
-        <h1>প্রেসক্রিপশন আপলোড করুন</h1>
-        <p>আপনার প্রেসক্রিপশনের স্পষ্ট ছবি তুলে বা ফাইল সিলেক্ট করে জমা দিন।</p>
+        <h1>প্রেসক্রিপশন পাঠান</h1>
+        <p>আপনার তথ্য দিয়ে আমাদের বার্তা পাঠান।</p>
 
-        <!-- সরাসরী ইমেইলে তথ্য পাঠাবার ফরম -->
-        <form action="https://formsubmit.co/mr77251519@gmail.com" method="POST" enctype="multipart/form-data">
+        <!-- সাকসেস মেসেজ বক্স -->
+        <div id="successMessage" class="success-message">
+            ✅ আপনার তথ্যটি সফলভাবে আমাদের কাছে পৌঁছেছে! আমরা খুব দ্রুত আপনার সাথে যোগাযোগ করব।
+        </div>
+
+        <!-- প্রেসক্রিপশন ফরম -->
+        <form id="prescriptionForm">
             <div class="form-group">
                 <label for="name">আপনার নাম:</label>
-                <input type="text" id="name" name="name" required placeholder="উদাহরণ: মো: রফিকুল ইসলাম">
+                <input type="text" id="name" name="user_name" required placeholder="উদাহরণ: মো: রফিকুল ইসলাম">
             </div>
 
             <div class="form-group">
                 <label for="phone">মোবাইল নম্বর:</label>
-                <input type="tel" id="phone" name="phone" required placeholder="018XXXXXXXX">
+                <input type="tel" id="phone" name="user_phone" required placeholder="018XXXXXXXX">
             </div>
 
             <div class="form-group">
-                <label for="address">ঠিকানা (হোম ডেলিভারির জন্য):</label>
-                <textarea id="address" name="address" rows="3" placeholder="আপনার বিস্তারিত ঠিকানা লিখুন"></textarea>
+                <label for="address">ঠিকানা বা ঔষধের বিবরণ:</label>
+                <textarea id="address" name="message" rows="3" placeholder="আপনার প্রয়োজনীয় ঔষধ বা ঠিকানা লিখুন"></textarea>
             </div>
 
-            <div class="form-group">
-                <label for="file">প্রেসক্রিপশনের ছবি আপলোড করুন:</label>
-                <input type="file" id="file" name="attachment" accept="image/*,.pdf" required>
-            </div>
-
-            <button type="submit" class="btn-submit">প্রেসক্রিপশন জমা দিন</button>
+            <button type="submit" class="btn-submit" id="submitBtn">মেসেজ পাঠান</button>
         </form>
 
         <div class="whatsapp-divider">
             <span>অথবা</span>
         </div>
 
-        <!-- সরাসরি হোয়াটসঅ্যাপ বাটন -->
         <a href="https://wa.me/8801835241929?text=আমি%20একটি%20প্রেসক্রিপশন%20পাঠাতে%20চাই" target="_blank" class="whatsapp-btn">
-            📱 হোয়াটসঅ্যাপের মাধ্যমে প্রেসক্রিপশন পাঠান
+            📱 হোয়াটসঅ্যাপের মাধ্যমে প্রেসক্রিপশন বা ছবি পাঠান
         </a>
     </div>
 
     <footer>
         <p>&copy; ২০২৬ মোহাম্মদ ফার্মেসী। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
+
+    <script>
+        const form = document.getElementById('prescriptionForm');
+        const successMsg = document.getElementById('successMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitBtn.innerText = 'পাঠানো হচ্ছে...';
+            submitBtn.disabled = true;
+
+            emailjs.sendForm('service_meyf7ms', 'template_qumfdbq', this)
+                .then(function() {
+                    form.style.display = 'none';
+                    successMsg.style.display = 'block';
+                }, function(error) {
+                    alert('দুঃখিত, তথ্য পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
+                    submitBtn.innerText = 'মেসেজ পাঠান';
+                    submitBtn.disabled = false;
+                });
+        });
+    </script>
 
 </body>
 </html>
