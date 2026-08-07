@@ -1,9 +1,215 @@
-<nav>
-    <div class="logo">মোহাম্মদ ফার্মেসী</div>
-    <ul class="nav-links">
-        <li><a href="index.html">হোম</a></li>
-        <li><a href="medicines.html">ঔষধের তালিকা</a></li>
-        <li><a href="prescription.html">প্রেসক্রিপশন পাঠান</a></li>
-        <li><a href="contact.html">যোগাযোগ</a></li>
-    </ul>
-</nav>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্রেসক্রিপশন পাঠান - মোহাম্মদ ফার্মেসী</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #00a86b;
+            --secondary-color: #004d40;
+            --light-bg: #f4fbf7;
+            --white: #ffffff;
+            --text-color: #333333;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        /* Upload Container */
+        .upload-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .upload-container h1 {
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .upload-container p {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .whatsapp-divider {
+            text-align: center;
+            margin: 25px 0 15px 0;
+            position: relative;
+        }
+
+        .whatsapp-btn {
+            display: block;
+            text-align: center;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">💊 মোহাম্মদ ফার্মেসী</a>
+            <ul class="nav-links">
+                <li><a href="index.html">হোম</a></li>
+                <li><a href="prescription.html" style="color: var(--primary-color); font-weight: bold;">প্রেসক্রিপশন পাঠান</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="upload-container">
+        <h1>প্রেসক্রিপশন আপলোড করুন</h1>
+        <p>আপনার প্রেসক্রিপশনের স্পষ্ট ছবি তুলে বা ফাইল সিলেক্ট করে জমা দিন।</p>
+
+        <!-- প্রেসক্রিপশন সাবমিশন ফরম -->
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">আপনার নাম:</label>
+                <input type="text" id="name" name="name" required placeholder="উদাহরণ: মো: রফিকুল ইসলাম">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">মোবাইল নম্বর:</label>
+                <input type="tel" id="phone" name="phone" required placeholder="018XXXXXXXX">
+            </div>
+
+            <div class="form-group">
+                <label for="address">ঠিকানা (হোম ডেলিভারির জন্য):</label>
+                <textarea id="address" name="address" rows="3" placeholder="আপনার বিস্তারিত ঠিকানা লিখুন"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="file">প্রেসক্রিপশনের ছবি আপলোড করুন:</label>
+                <input type="file" id="file" name="prescription_image" accept="image/*,.pdf" required>
+            </div>
+
+            <button type="submit" class="btn-submit">প্রেসক্রিপশন জমা দিন</button>
+        </form>
+
+        <div class="whatsapp-divider">
+            <span>অথবা</span>
+        </div>
+
+        <!-- সরাসরি হোয়াটসঅ্যাপ বাটন -->
+        <a href="https://wa.me/8801835241929?text=আমি%20একটি%20প্রেসক্রিপশন%20পাঠাতে%20চাই" target="_blank" class="whatsapp-btn">
+            📱 হোয়াটসঅ্যাপের মাধ্যমে প্রেসক্রিপশন পাঠান
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; ২০২৬ মোহাম্মদ ফার্মেসী। সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+</body>
+</html>
