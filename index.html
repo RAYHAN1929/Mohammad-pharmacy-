@@ -215,7 +215,38 @@
             </ul>
         </nav>
     </header>
+<!-- লাইভ মেডিসিন সার্চ বার -->
+<div style="max-width: 500px; margin: 20px auto; padding: 10px; font-family: sans-serif;">
+  <input 
+    type="text" 
+    id="searchInput" 
+    onkeyup="searchMedicine()" 
+    placeholder="ওষুধের নাম লিখে খুঁজুন..." 
+    style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; box-sizing: border-box;"
+  >
 
+  <ul id="medicineList" style="list-style: none; padding: 0; margin-top: 10px;">
+    <li style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Napa 500mg</strong> - In Stock</li>
+    <li style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Seclo 20mg</strong> - In Stock</li>
+    <li style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Sergel 20mg</strong> - Out of Stock</li>
+  </ul>
+</div>
+
+<script>
+function searchMedicine() {
+  let input = document.getElementById('searchInput').value.toLowerCase();
+  let items = document.querySelectorAll('#medicineList li');
+
+  items.forEach(item => {
+    let text = item.textContent.toLowerCase();
+    if (text.includes(input)) {
+      item.style.display = "";
+    } else {
+      item.style.display = "none";
+    }
+  });
+}
+</script>
     <section id="home" class="hero">
         <h1><b>মোহাম্মদ ফার্মেসীতে আপনাকে স্বাগতম</b></h1>
         <p>১০০% আসল ঔষধ ও সঠিক স্বাস্থ্যসেবার বিশ্বস্ত প্রতিষ্ঠান</p>
