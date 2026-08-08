@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ওষুধ অর্ডার | মোহাম্মদ ফার্মেসী</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f1f8f5;
+  color:#222;
+}
+
+header{
+  background:linear-gradient(135deg,#075e43,#12b886);
+  color:white;
+  text-align:center;
+  padding:28px 15px;
+}
+
+.logo{
+  width:75px;
+  height:75px;
+  margin:auto;
+  background:white;
+  color:#087f5b;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:38px;
+}
+
+header h1{
+  margin-top:10px;
+  font-size:28px;
+}
+
+header p{
+  margin-top:5px;
+}
+
+.container{
+  max-width:650px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.card h2{
+  color:#087f5b;
+  margin-bottom:20px;
+  text-align:center;
+}
+
+label{
+  display:block;
+  margin-top:15px;
+  margin-bottom:7px;
+  font-weight:bold;
+}
+
+input,
+textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #cbd5d1;
+  border-radius:10px;
+  font-size:16px;
+  outline:none;
+}
+
+input:focus,
+textarea:focus{
+  border-color:#087f5b;
+}
+
+textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+.prescription{
+  background:#e6fcf5;
+  padding:18px;
+  border-radius:12px;
+  margin-top:8px;
+}
+
+.prescription input{
+  border:0;
+  background:white;
+}
+
+.note{
+  background:#fff3bf;
+  padding:14px;
+  border-radius:10px;
+  margin-top:18px;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.order-btn{
+  width:100%;
+  border:0;
+  background:#25d366;
+  color:white;
+  padding:15px;
+  border-radius:30px;
+  margin-top:22px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.order-btn:hover{
+  background:#1da851;
+}
+
+.back{
+  display:block;
+  text-align:center;
+  margin-top:18px;
+  color:#087f5b;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+footer{
+  background:#064d39;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">💊</div>
+
+<h1>মোহাম্মদ ফার্মেসী</h1>
+
+<p>ওষুধ অর্ডার করুন</p>
+
+</header>
+
+
+<div class="container">
+
+<div class="card">
+
+<h2>🛒 অর্ডারের তথ্য</h2>
+
+
+<label>
+আপনার নাম *
+</label>
+
+<input
+type="text"
+id="name"
+placeholder="আপনার নাম লিখুন"
+>
+
+
+<label>
+মোবাইল নম্বর *
+</label>
+
+<input
+type="tel"
+id="phone"
+placeholder="01XXXXXXXXX"
+>
+
+
+<label>
+ঠিকানা *
+</label>
+
+<textarea
+id="address"
+placeholder="আপনার সম্পূর্ণ ঠিকানা লিখুন"
+></textarea>
+
+
+<label>
+যে ওষুধ প্রয়োজন *
+</label>
+
+<textarea
+id="medicine"
+placeholder="যেমন:
+Napa 500 mg - 2 পাতা
+Seclo 20 mg - 1 পাতা
+Napa Syrup - 1 বোতল"
+></textarea>
+
+
+<label>
+📋 প্রেসক্রিপশন
+</label>
+
+<div class="prescription">
+
+<input
+type="file"
+id="prescription"
+accept="image/*,.pdf"
+>
+
+</div>
+
+
+<div class="note">
+
+<strong>📌 গুরুত্বপূর্ণ:</strong><br>
+
+প্রেসক্রিপশন থাকলে ছবি নির্বাচন করুন।
+WhatsApp খোলার পর একই ছবিটি
+WhatsApp চ্যাটে Attach করে পাঠিয়ে দিন।
+
+</div>
+
+
+<label>
+অতিরিক্ত মন্তব্য
+</label>
+
+<textarea
+id="message"
+placeholder="যেমন: বাসায় ডেলিভারি চাই"
+></textarea>
+
+
+<button
+class="order-btn"
+onclick="sendOrder()">
+
+📲 WhatsApp-এ অর্ডার পাঠান
+
+</button>
+
+
+<a
+href="index.html"
+class="back">
+
+← মূল পেইজে ফিরে যান
+
+</a>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<strong>মোহাম্মদ ফার্মেসী</strong><br>
+
+📍 রহিমানগর দক্ষিণ বাজার<br>
+
+📞 ০১৮৩৫২৪১৯২৯
+
+</footer>
+
+
+<script>
+
+function sendOrder(){
+
+const name =
+document.getElementById("name").value.trim();
+
+const phone =
+document.getElementById("phone").value.trim();
+
+const address =
+document.getElementById("address").value.trim();
+
+const medicine =
+document.getElementById("medicine").value.trim();
+
+const message =
+document.getElementById("message").value.trim();
+
+const prescription =
+document.getElementById("prescription").files[0];
+
+
+if(!name){
+
+alert("আপনার নাম লিখুন।");
+return;
+
+}
+
+if(!phone){
+
+alert("মোবাইল নম্বর লিখুন।");
+return;
+
+}
+
+if(!address){
+
+alert("আপনার ঠিকানা লিখুন।");
+return;
+
+}
+
+if(!medicine){
+
+alert("কোন ওষুধ প্রয়োজন তা লিখুন।");
+return;
+
+}
+
+
+let text =
+"🛒 *মোহাম্মদ ফার্মেসী - নতুন অর্ডার*%0A%0A";
+
+text +=
+"👤 নাম: "
++ encodeURIComponent(name)
++ "%0A";
+
+text +=
+"📞 মোবাইল: "
++ encodeURIComponent(phone)
++ "%0A";
+
+text +=
+"📍 ঠিকানা: "
++ encodeURIComponent(address)
++ "%0A%0A";
+
+text +=
+"💊 ওষুধ:%0A"
++ encodeURIComponent(medicine)
++ "%0A%0A";
+
+
+if(prescription){
+
+text +=
+"📋 প্রেসক্রিপশন: ছবি/ফাইল নির্বাচন করা হয়েছে।%0A";
+
+text +=
+"⚠️ WhatsApp-এ ছবিটি Attach করে পাঠাবেন।%0A";
+
+}
+
+
+if(message){
+
+text +=
+"%0A📝 অতিরিক্ত মন্তব্য:%0A"
++ encodeURIComponent(message);
+
+}
+
+
+const whatsappNumber =
+"8801835241929";
+
+const url =
+"https://wa.me/"
++ whatsappNumber
++ "?text="
++ text;
+
+
+window.open(url,"_blank");
+
+}
+
+</script>
+
+</body>
+</html>
