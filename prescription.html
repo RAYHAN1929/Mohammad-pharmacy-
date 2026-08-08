@@ -1,228 +1,412 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="মোহাম্মদ ফার্মেসী - ওষুধের তালিকা ও সন্ধান">
-    <link rel="icon" href="favicon.ico">
-    <title>ওষুধের তালিকা - মোহাম্মদ ফার্মেসী</title>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        :root {
-            --primary-color: #00a86b;
-            --secondary-color: #004d40;
-            --light-bg: #f4fbf7;
-            --white: #ffffff;
-            --text-color: #333333;
-        }
+  <title>প্রেসক্রিপশন পাঠান | মোহাম্মদ ফার্মেসী</title>
 
-        body {
-            background-color: var(--light-bg);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    body {
+      background: linear-gradient(135deg, #e8fff7, #f4faff);
+      min-height: 100vh;
+      color: #222;
+    }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-        }
+    .header {
+      background: linear-gradient(135deg, #087f5b, #12b886);
+      color: white;
+      text-align: center;
+      padding: 25px 15px 35px;
+      border-radius: 0 0 30px 30px;
+    }
 
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 900 !important;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
+    .logo {
+      width: 75px;
+      height: 75px;
+      margin: auto;
+      background: white;
+      color: #087f5b;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 38px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-            align-items: center;
-        }
+    .header h1 {
+      margin-top: 12px;
+      font-size: 28px;
+    }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            transition: color 0.3s;
-        }
+    .header p {
+      margin-top: 5px;
+      font-size: 15px;
+    }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary-color);
-        }
+    .container {
+      max-width: 600px;
+      margin: -20px auto 30px;
+      padding: 0 15px;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+    .card {
+      background: white;
+      border-radius: 22px;
+      padding: 25px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+    }
 
-        .page-title {
-            text-align: center;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            font-size: 2rem;
-        }
+    .title {
+      text-align: center;
+      margin-bottom: 22px;
+    }
 
-        .search-box {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
+    .title h2 {
+      color: #087f5b;
+      font-size: 23px;
+    }
 
-        .search-input {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid var(--primary-color);
-            border-radius: 6px;
-            font-size: 16px;
-            outline: none;
-            box-sizing: border-box;
-        }
+    .title p {
+      color: #777;
+      font-size: 14px;
+      margin-top: 6px;
+    }
 
-        .medicine-list {
-            list-style: none;
-            background: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            padding: 10px 20px;
-        }
+    label {
+      display: block;
+      margin: 15px 0 7px;
+      font-weight: bold;
+      color: #333;
+    }
 
-        .medicine-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    input,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d8e8e2;
+      border-radius: 12px;
+      outline: none;
+      font-size: 15px;
+      background: #f8fffc;
+    }
 
-        .medicine-list li:last-child {
-            border-bottom: none;
-        }
+    input:focus,
+    textarea:focus {
+      border-color: #12b886;
+      box-shadow: 0 0 0 3px rgba(18,184,134,0.10);
+    }
 
-        .badge-in {
-            background: #e8f5e9;
-            color: #2e7d32;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-        }
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
 
-        .badge-out {
-            background: #ffebee;
-            color: #c62828;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-        }
+    .upload-box {
+      border: 2px dashed #12b886;
+      background: #f0fff9;
+      border-radius: 15px;
+      padding: 25px 15px;
+      text-align: center;
+      margin-top: 8px;
+    }
 
-        footer {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            text-align: center;
-            padding: 20px;
-            margin-top: 60px;
-        }
+    .upload-icon {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
 
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-        }
-    </style>
+    .upload-box p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .file-label {
+      display: inline-block;
+      background: #087f5b;
+      color: white;
+      padding: 11px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #prescription {
+      display: none;
+    }
+
+    #fileName {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #087f5b;
+      font-weight: bold;
+    }
+
+    .send-btn {
+      width: 100%;
+      border: none;
+      margin-top: 22px;
+      padding: 15px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #087f5b, #12b886);
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(8,127,91,0.25);
+    }
+
+    .send-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .home-btn {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #087f5b;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .info {
+      background: #fff9db;
+      border-left: 4px solid #f59f00;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      font-size: 13px;
+      padding: 15px;
+    }
+  </style>
 </head>
+
 <body>
 
-    <header>
-        <nav>
-            <a href="index.html" class="logo">💊 <b>মোহাম্মদ ফার্মেসী</b></a>
-            <ul class="nav-links">
-                <li><a href="index.html">হোম</a></li>
-                <li><a href="medicines.html" class="active">ওষুধের তালিকা</a></li>
-                <li><a href="prescription.html">প্রেসক্রিপশন পাঠান</a></li>
-                <li><a href="index.html#contact">যোগাযোগ</a></li>
-            </ul>
-        </nav>
-    </header>
+  <div class="header">
 
-    <div class="container">
-        <h1 class="page-title">🔍 আমাদের ওষুধের তালিকা</h1>
-        
-        <div class="search-box">
-            <input 
-                type="text" 
-                id="searchInput" 
-                onkeyup="searchMedicine()" 
-                placeholder="ওষুধের নাম লিখে খুঁজুন (যেমন: Napa, Seclo)..." 
-                class="search-input"
-            >
+    <div class="logo">💊</div>
+
+    <h1>মোহাম্মদ ফার্মেসী</h1>
+
+    <p>সহজেই আপনার প্রেসক্রিপশন পাঠান</p>
+
+  </div>
+
+
+  <div class="container">
+
+    <div class="card">
+
+      <div class="title">
+        <h2>📋 প্রেসক্রিপশন পাঠান</h2>
+
+        <p>
+          নিচের তথ্যগুলো পূরণ করে প্রেসক্রিপশনের ছবি পাঠান
+        </p>
+      </div>
+
+
+      <label>রোগীর নাম</label>
+
+      <input
+        type="text"
+        id="name"
+        placeholder="আপনার নাম লিখুন"
+      >
+
+
+      <label>মোবাইল নম্বর</label>
+
+      <input
+        type="tel"
+        id="phone"
+        placeholder="01XXXXXXXXX"
+      >
+
+
+      <label>প্রেসক্রিপশনের ছবি</label>
+
+      <div class="upload-box">
+
+        <div class="upload-icon">📷</div>
+
+        <p>
+          প্রেসক্রিপশনের পরিষ্কার ছবি নির্বাচন করুন
+        </p>
+
+        <label for="prescription" class="file-label">
+          📁 ছবি নির্বাচন করুন
+        </label>
+
+        <input
+          type="file"
+          id="prescription"
+          accept="image/*"
+        >
+
+        <div id="fileName">
+          কোনো ছবি নির্বাচন করা হয়নি
         </div>
 
-        <ul id="medicineList" class="medicine-list">
-            <li><span><strong>Napa 500mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
-            <li><span><strong>Napa Extra</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
-            <li><span><strong>Ace 500mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
-            <li><span><strong>Ace Plus</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
-            <li><span><strong>Seclo 20mg</strong> (Capsule)</span> <span class="badge-in">In Stock</span></li>
-            <li><span><strong>Sergel 20mg</strong> (Capsule)</span> <span class="badge-out">Out of Stock</span></li>
-            <li><span><strong>Maxpro 20mg</strong> (Capsule)</span> <span class="badge-in">In Stock</span></li>
-            <li><span><strong>Finix 20mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
-            <li><span><strong>Monas 10mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
-            <li><span><strong>Alatrol 10mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
-            <li><span><strong>Cef-3 200mg</strong> (Capsule)</span> <span class="badge-in">In Stock</span></li>
-            <li><span><strong>Azithrocin 500mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
-            <li><span><strong>Flexi 50mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
-            <li><span><strong>Naprosyn 500mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
-        </ul>
+      </div>
+
+
+      <label>অতিরিক্ত তথ্য</label>
+
+      <textarea
+        id="message"
+        placeholder="যেমন: কোন ওষুধ প্রয়োজন বা অন্য কোনো কথা..."
+      ></textarea>
+
+
+      <button
+        class="send-btn"
+        onclick="sendPrescription()"
+      >
+        📲 WhatsApp-এ পাঠান
+      </button>
+
+
+      <a href="index.html" class="home-btn">
+        🏠 হোম পেইজে ফিরে যান
+      </a>
+
+
+      <div class="info">
+        ⚠️ প্রেসক্রিপশনের ছবি পরিষ্কার ও সম্পূর্ণভাবে তুলুন।
+        ওষুধ ব্যবহারের ক্ষেত্রে চিকিৎসকের পরামর্শ অনুসরণ করুন।
+      </div>
+
     </div>
 
-    <footer>
-        <p>&copy; ২০২৬ মোহাম্মদ ফার্মেসী। সর্বস্বত্ব সংরক্ষিত।</p>
-    </footer>
+  </div>
 
-    <script>
-    function searchMedicine() {
-      let input = document.getElementById('searchInput').value.toLowerCase();
-      let items = document.querySelectorAll('#medicineList li');
 
-      items.forEach(item => {
-        let text = item.textContent.toLowerCase();
-        if (text.includes(input)) {
-          item.style.display = "flex";
-        } else {
-          item.style.display = "none";
-        }
-      });
+  <footer>
+    © ২০২৬ মোহাম্মদ ফার্মেসী
+  </footer>
+
+
+  <script>
+
+    const fileInput =
+      document.getElementById("prescription");
+
+    const fileName =
+      document.getElementById("fileName");
+
+
+    fileInput.addEventListener("change", function () {
+
+      if (this.files.length > 0) {
+
+        fileName.innerText =
+          "✅ " + this.files[0].name;
+
+      } else {
+
+        fileName.innerText =
+          "কোনো ছবি নির্বাচন করা হয়নি";
+
+      }
+
+    });
+
+
+    function sendPrescription() {
+
+      const name =
+        document.getElementById("name").value.trim();
+
+      const phone =
+        document.getElementById("phone").value.trim();
+
+      const message =
+        document.getElementById("message").value.trim();
+
+
+      if (name === "") {
+
+        alert("দয়া করে রোগীর নাম লিখুন।");
+        return;
+
+      }
+
+
+      if (phone === "") {
+
+        alert("দয়া করে মোবাইল নম্বর লিখুন।");
+        return;
+
+      }
+
+
+      if (fileInput.files.length === 0) {
+
+        alert("দয়া করে প্রেসক্রিপশনের ছবি নির্বাচন করুন।");
+        return;
+
+      }
+
+
+      /*
+       * এখানে আপনার WhatsApp নম্বর বসাবেন।
+       * 880 দিয়ে শুরু হবে এবং + চিহ্ন থাকবে না।
+       *
+       * উদাহরণ:
+       * 01835241929
+       * হবে:
+       * 8801835241929
+       */
+
+      const pharmacyNumber = "8801835241929";
+
+
+      const text =
+        "📋 নতুন প্রেসক্রিপশন" +
+        "\n\n" +
+        "👤 রোগীর নাম: " + name +
+        "\n" +
+        "📞 মোবাইল: " + phone +
+        "\n\n" +
+        "📝 অতিরিক্ত তথ্য: " +
+        (message || "কিছু নেই") +
+        "\n\n" +
+        "📷 প্রেসক্রিপশনের ছবি নির্বাচন করা হয়েছে।";
+
+
+      const whatsappURL =
+        "https://wa.me/" +
+        pharmacyNumber +
+        "?text=" +
+        encodeURIComponent(text);
+
+
+      window.open(
+        whatsappURL,
+        "_blank"
+      );
+
     }
-    </script>
+
+  </script>
 
 </body>
 </html>
