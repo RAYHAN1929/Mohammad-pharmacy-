@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
@@ -78,6 +78,45 @@
 
         .nav-links a:hover {
             color: var(--primary-color);
+        }
+
+        /* Search Section */
+        .search-container {
+            max-width: 600px;
+            margin: 30px auto 10px auto;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .search-container h3 {
+            color: var(--secondary-color);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .medicine-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .medicine-list li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
         }
 
         /* Hero Section */
@@ -202,8 +241,7 @@
         }
     </style>
 </head>
-
- <body>
+<body>
 
     <header>
         <nav>
@@ -217,38 +255,26 @@
         </nav>
     </header>
 
-  <!-- লাইভ মেডিসিন সার্চ বার -->
-<div style="max-width: 500px; margin: 20px auto; padding: 10px; font-family: sans-serif;">
-  <input 
-    type="text" 
-    id="searchInput" 
-    onkeyup="searchMedicine()" 
-    placeholder="ওষুধের নাম লিখে খুঁজুন..." 
-    style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; box-sizing: border-box;"
-  >
+    <!-- লাইভ মেডিসিন সার্চ বার -->
+    <div class="search-container">
+        <h3>🔍 প্রয়োজনীয় ঔষধ খুঁজুন</h3>
+        <input 
+            type="text" 
+            id="searchInput" 
+            onkeyup="searchMedicine()" 
+            placeholder="ওষুধের নাম লিখুন..." 
+            class="search-input"
+        >
 
-  <ul id="medicineList" style="list-style: none; padding: 0; margin-top: 10px;">
-    <li style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Napa 500mg</strong> - In Stock</li>
-    <li style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Seclo 20mg</strong> - In Stock</li>
-    <li style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Sergel 20mg</strong> - Out of Stock</li>
-  </ul>
-</div>
+        <ul id="medicineList" class="medicine-list">
+            <li><span><strong>Napa 500mg</strong></span> <span style="color: green;">In Stock</span></li>
+            <li><span><strong>Seclo 20mg</strong></span> <span style="color: green;">In Stock</span></li>
+            <li><span><strong>Sergel 20mg</strong></span> <span style="color: red;">Out of Stock</span></li>
+            <li><span><strong>Ace 500mg</strong></span> <span style="color: green;">In Stock</span></li>
+            <li><span><strong>Monas 10mg</strong></span> <span style="color: green;">In Stock</span></li>
+        </ul>
+    </div>
 
-<script>
-function searchMedicine() {
-  let input = document.getElementById('searchInput').value.toLowerCase();
-  let items = document.querySelectorAll('#medicineList li');
-
-  items.forEach(item => {
-    let text = item.textContent.toLowerCase();
-    if (text.includes(input)) {
-      item.style.display = "";
-    } else {
-      item.style.display = "none";
-    }
-  });
-}
-</script>
     <section id="home" class="hero">
         <h1><b>মোহাম্মদ ফার্মেসীতে আপনাকে স্বাগতম</b></h1>
         <p>১০০% আসল ঔষধ ও সঠিক স্বাস্থ্যসেবার বিশ্বস্ত প্রতিষ্ঠান</p>
@@ -281,10 +307,8 @@ function searchMedicine() {
         <section id="contact">
             <div class="info-grid">
                 <div class="info-box">
-                  <h3>যোগাযোগ ও স্থান</h3>
-                 <p>📍 <strong>ঠিকানা:</strong> রহিমানগর দক্ষিণ বাজার, কচুয়া   
-                     রোড</p>
-                    
+                    <h3>যোগাযোগ ও স্থান</h3>
+                    <p>📍 <strong>ঠিকানা:</strong> রহিমানগর দক্ষিণ বাজার, কচুয়া রোড</p>
                     <p>📞 <strong>মোবাইল:</strong> +88 01835241929</p>
                     <p>✉️ <strong>ইমেইল:</strong> mr77251519@gmail.com</p>
                 </div>
@@ -299,6 +323,23 @@ function searchMedicine() {
     <footer>
         <p>&copy; ২০২৬ মোহাম্মদ ফার্মেসী। সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
+
+    <!-- মেডিসিন সার্চ ফিল্টার স্ক্রিপ্ট -->
+    <script>
+    function searchMedicine() {
+      let input = document.getElementById('searchInput').value.toLowerCase();
+      let items = document.querySelectorAll('#medicineList li');
+
+      items.forEach(item => {
+        let text = item.textContent.toLowerCase();
+        if (text.includes(input)) {
+          item.style.display = "flex";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
+    </script>
 
 </body>
 </html>
