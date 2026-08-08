@@ -1,202 +1,244 @@
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>মোহাম্মদ ফার্মেসী</title>
+<title>মোহাম্মদ ফার্মেসী</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
 
-    body {
-      background: #f2f8f6;
-      color: #222;
-      line-height: 1.6;
-    }
+body{
+  background:#eefaf6;
+  color:#222;
+}
 
-    header {
-      background: linear-gradient(135deg, #087f5b, #0ca678);
-      color: white;
-      text-align: center;
-      padding: 30px 15px;
-    }
+header{
+  background:linear-gradient(135deg,#075e43,#12b886);
+  color:white;
+  text-align:center;
+  padding:35px 15px 45px;
+  border-radius:0 0 35px 35px;
+}
 
-    header h1 {
-      font-size: 32px;
-      margin-bottom: 8px;
-    }
+.logo{
+  width:95px;
+  height:95px;
+  margin:auto;
+  background:white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+  box-shadow:0 8px 25px rgba(0,0,0,.2);
+}
 
-    header p {
-      font-size: 17px;
-    }
+header h1{
+  margin-top:15px;
+  font-size:32px;
+}
 
-    .logo {
-      width: 90px;
-      height: 90px;
-      background: white;
-      border-radius: 50%;
-      margin: 0 auto 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 45px;
-      color: #087f5b;
-    }
+header p{
+  margin-top:7px;
+  font-size:16px;
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
 
-    .card {
-      background: white;
-      margin: 20px 0;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    }
+.card{
+  background:white;
+  margin:20px 0;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
 
-    .card h2 {
-      color: #087f5b;
-      margin-bottom: 12px;
-    }
+.card h2{
+  color:#087f5b;
+  margin-bottom:12px;
+}
 
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
-      margin-top: 15px;
-    }
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:15px;
+}
 
-    .service {
-      background: #e6fcf5;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      font-weight: bold;
-      color: #087f5b;
-    }
+.service{
+  background:#e6fcf5;
+  padding:22px 10px;
+  border-radius:16px;
+  text-align:center;
+  color:#087f5b;
+  font-weight:bold;
+  transition:.3s;
+}
 
-    .contact {
-      text-align: center;
-    }
+.service:hover{
+  transform:translateY(-5px);
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
 
-    .phone {
-      display: inline-block;
-      margin-top: 10px;
-      background: #087f5b;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-    }
+.buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
 
-    .phone:hover {
-      background: #065f46;
-    }
+.btn{
+  padding:13px 22px;
+  border-radius:30px;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-    footer {
-      background: #075e43;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-    }
+.call{
+  background:#087f5b;
+}
 
-    .notice {
-      background: #fff3bf;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 15px;
-      text-align: center;
-    }
-  </style>
+.whatsapp{
+  background:#25d366;
+}
+
+.prescription{
+  background:#5f3dc4;
+}
+
+.notice{
+  background:#fff3bf;
+  padding:18px;
+  border-radius:15px;
+  text-align:center;
+  margin-top:20px;
+}
+
+footer{
+  background:#064d39;
+  color:white;
+  text-align:center;
+  padding:22px;
+  margin-top:30px;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">⚕️</div>
+<header>
 
-    <h1>মোহাম্মদ ফার্মেসী</h1>
+<div class="logo">⚕️</div>
 
-    <p>আপনার বিশ্বস্ত ও নির্ভরযোগ্য ঔষধের দোকান</p>
-  </header>
+<h1>মোহাম্মদ ফার্মেসী</h1>
 
-  <div class="container">
+<p>আপনার বিশ্বস্ত ও নির্ভরযোগ্য ঔষধের দোকান</p>
 
-    <div class="card">
-      <h2>আমাদের সম্পর্কে</h2>
+</header>
 
-      <p>
-        মোহাম্মদ ফার্মেসীতে বিভিন্ন ধরনের প্রয়োজনীয়
-        মেডিসিন ও স্বাস্থ্যসেবা সামগ্রী পাওয়া যায়।
-        আমরা সর্বদা গ্রাহকদের ভালো সেবা দেওয়ার চেষ্টা করি।
-      </p>
-    </div>
+<div class="container">
 
-    <div class="card">
-      <h2>আমাদের সেবা</h2>
+<div class="card">
 
-      <div class="services">
+<h2>🏥 আমাদের সম্পর্কে</h2>
 
-        <div class="service">
-          💊<br>
-          বিভিন্ন ধরনের মেডিসিন
-        </div>
+<p>
+মোহাম্মদ ফার্মেসীতে বিভিন্ন ধরনের প্রয়োজনীয়
+মেডিসিন, স্বাস্থ্যসেবা সামগ্রী ও পরিচর্যা পণ্য পাওয়া যায়।
+আমরা গ্রাহকদের সর্বোত্তম সেবা দেওয়ার চেষ্টা করি।
+</p>
 
-        <div class="service">
-          🩺<br>
-          স্বাস্থ্যসেবা সামগ্রী
-        </div>
+</div>
 
-        <div class="service">
-          🧴<br>
-          স্বাস্থ্য ও পরিচর্যা পণ্য
-        </div>
 
-        <div class="service">
-          📋<br>
-          প্রয়োজনীয় মেডিকেল পণ্য
-        </div>
+<div class="card">
 
-      </div>
-    </div>
+<h2>💊 আমাদের সেবা</h2>
 
-    <div class="card contact">
-      <h2>যোগাযোগ করুন</h2>
+<div class="services">
 
-      <p>
-        📍 রহিমানগর দক্ষিণ বাজার
-      </p>
+<div class="service">
+💊<br><br>
+বিভিন্ন ধরনের মেডিসিন
+</div>
 
-      <p>
-        📞 ০১৮৩৫২৪১৯২৯
-      </p>
+<div class="service">
+🩺<br><br>
+স্বাস্থ্যসেবা সামগ্রী
+</div>
 
-      <a class="phone" href="tel:01835241929">
-        📞 এখনই ফোন করুন
-      </a>
+<div class="service">
+🧴<br><br>
+স্বাস্থ্য ও পরিচর্যা পণ্য
+</div>
 
-      <div class="notice">
-        <strong>মোহাম্মদ ফার্মেসী</strong><br>
-        আপনার সুস্থতা আমাদের অঙ্গীকার।
-      </div>
-    </div>
+<div class="service">
+📋<br><br>
+মেডিকেল পণ্য
+</div>
 
-  </div>
+</div>
 
-  <footer>
-    © ২০২৬ মোহাম্মদ ফার্মেসী — সর্বস্বত্ব সংরক্ষিত
-  </footer>
+</div>
+
+
+<div class="card">
+
+<h2>📍 আমাদের ঠিকানা</h2>
+
+<p>রহিমানগর দক্ষিণ বাজার</p>
+
+<p style="margin-top:8px;">
+📞 ০১৮৩৫২৪১৯২৯
+</p>
+
+<div class="buttons">
+
+<a class="btn call" href="tel:01835241929">
+📞 ফোন করুন
+</a>
+
+<a class="btn whatsapp"
+href="https://wa.me/8801835241929">
+💬 WhatsApp
+</a>
+
+<a class="btn prescription"
+href="prescription.html">
+📋 প্রেসক্রিপশন
+</a>
+
+</div>
+
+<div class="notice">
+
+<strong>মোহাম্মদ ফার্মেসী</strong><br>
+
+আপনার সুস্থতা আমাদের অঙ্গীকার ❤️
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+© ২০২৬ মোহাম্মদ ফার্মেসী — সর্বস্বত্ব সংরক্ষিত
+
+</footer>
 
 </body>
 </html>
