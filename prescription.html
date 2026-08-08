@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>প্রেসক্রিপশন পাঠান - মোহাম্মদ ফার্মেসী</title>
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init("_Oe3hEYOfYM2nwF_R"); 
-        })();
-    </script>
+    <meta name="description" content="মোহাম্মদ ফার্মেসী - ওষুধের তালিকা ও সন্ধান">
+    <link rel="icon" href="favicon.ico">
+    <title>ওষুধের তালিকা - মোহাম্মদ ফার্মেসী</title>
+    
     <style>
         * {
             margin: 0;
@@ -51,9 +47,12 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-size: 1.6rem;
+            font-weight: 900 !important;
             color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
             text-decoration: none;
         }
 
@@ -61,99 +60,87 @@
             display: flex;
             list-style: none;
             gap: 20px;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--text-color);
-            font-weight: 500;
+            font-weight: 600;
+            transition: color 0.3s;
         }
 
-        .upload-container {
-            max-width: 600px;
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 800px;
             margin: 40px auto;
-            background: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            padding: 0 20px;
         }
 
-        .upload-container h1 {
-            color: var(--secondary-color);
+        .page-title {
             text-align: center;
-            margin-bottom: 10px;
-            font-size: 1.8rem;
-        }
-
-        .upload-container p {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #666;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
             color: var(--secondary-color);
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .btn-submit {
-            width: 100%;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn-submit:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .success-message {
-            display: none;
-            background-color: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border: 1px solid #c3e6cb;
-            border-radius: 5px;
             margin-bottom: 20px;
-            text-align: center;
+            font-size: 2rem;
+        }
+
+        .search-box {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--primary-color);
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .medicine-list {
+            list-style: none;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 10px 20px;
+        }
+
+        .medicine-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .medicine-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge-in {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: bold;
         }
 
-        .whatsapp-divider {
-            text-align: center;
-            margin: 25px 0 15px 0;
-        }
-
-        .whatsapp-btn {
-            display: block;
-            text-align: center;
-            background-color: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 5px;
+        .badge-out {
+            background: #ffebee;
+            color: #c62828;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: bold;
-            font-size: 1rem;
         }
 
         footer {
@@ -161,7 +148,7 @@
             color: var(--white);
             text-align: center;
             padding: 20px;
-            margin-top: 50px;
+            margin-top: 60px;
         }
 
         @media (max-width: 768px) {
@@ -179,45 +166,42 @@
             <a href="index.html" class="logo">💊 <b>মোহাম্মদ ফার্মেসী</b></a>
             <ul class="nav-links">
                 <li><a href="index.html">হোম</a></li>
-                <li><a href="prescription.html" style="color: var(--primary-color); font-weight: bold;">প্রেসক্রিপশন পাঠান</a></li>
+                <li><a href="medicines.html" class="active">ওষুধের তালিকা</a></li>
+                <li><a href="prescription.html">প্রেসক্রিপশন পাঠান</a></li>
+                <li><a href="index.html#contact">যোগাযোগ</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="upload-container">
-        <h1>প্রেসক্রিপশন পাঠান</h1>
-        <p>আপনার তথ্য দিয়ে আমাদের বার্তা পাঠান।</p>
-
-        <div id="successMessage" class="success-message">
-            ✅ আপনার তথ্যটি সফলভাবে আমাদের কাছে পৌঁছেছে! আমরা খুব দ্রুত আপনার সাথে যোগাযোগ করব।
+    <div class="container">
+        <h1 class="page-title">🔍 আমাদের ওষুধের তালিকা</h1>
+        
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="searchInput" 
+                onkeyup="searchMedicine()" 
+                placeholder="ওষুধের নাম লিখে খুঁজুন (যেমন: Napa, Seclo)..." 
+                class="search-input"
+            >
         </div>
 
-        <form id="prescriptionForm">
-            <div class="form-group">
-                <label for="name">আপনার নাম:</label>
-                <input type="text" id="name" name="user_name" required placeholder="উদাহরণ: মো: রফিকুল ইসলাম">
-            </div>
-
-            <div class="form-group">
-                <label for="phone">মোবাইল নম্বর:</label>
-                <input type="tel" id="phone" name="user_phone" required placeholder="018XXXXXXXX">
-            </div>
-
-            <div class="form-group">
-                <label for="address">ঠিকানা বা ঔষধের বিবরণ:</label>
-                <textarea id="address" name="message" rows="3" placeholder="আপনার প্রয়োজনীয় ঔষধ বা ঠিকানা লিখুন"></textarea>
-            </div>
-
-            <button type="submit" class="btn-submit" id="submitBtn">মেসেজ পাঠান</button>
-        </form>
-
-        <div class="whatsapp-divider">
-            <span>অথবা</span>
-        </div>
-
-        <a href="https://wa.me/8801835241929?text=আমি%20একটি%20প্রেসক্রিপশন%20পাঠাতে%20চাই" target="_blank" class="whatsapp-btn">
-            📱 হোয়াটসঅ্যাপের মাধ্যমে প্রেসক্রিপশন বা ছবি পাঠান
-        </a>
+        <ul id="medicineList" class="medicine-list">
+            <li><span><strong>Napa 500mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
+            <li><span><strong>Napa Extra</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
+            <li><span><strong>Ace 500mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
+            <li><span><strong>Ace Plus</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
+            <li><span><strong>Seclo 20mg</strong> (Capsule)</span> <span class="badge-in">In Stock</span></li>
+            <li><span><strong>Sergel 20mg</strong> (Capsule)</span> <span class="badge-out">Out of Stock</span></li>
+            <li><span><strong>Maxpro 20mg</strong> (Capsule)</span> <span class="badge-in">In Stock</span></li>
+            <li><span><strong>Finix 20mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
+            <li><span><strong>Monas 10mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
+            <li><span><strong>Alatrol 10mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
+            <li><span><strong>Cef-3 200mg</strong> (Capsule)</span> <span class="badge-in">In Stock</span></li>
+            <li><span><strong>Azithrocin 500mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
+            <li><span><strong>Flexi 50mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
+            <li><span><strong>Naprosyn 500mg</strong> (Tablet)</span> <span class="badge-in">In Stock</span></li>
+        </ul>
     </div>
 
     <footer>
@@ -225,26 +209,19 @@
     </footer>
 
     <script>
-        const form = document.getElementById('prescriptionForm');
-        const successMsg = document.getElementById('successMessage');
-        const submitBtn = document.getElementById('submitBtn');
+    function searchMedicine() {
+      let input = document.getElementById('searchInput').value.toLowerCase();
+      let items = document.querySelectorAll('#medicineList li');
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            submitBtn.innerText = 'পাঠানো হচ্ছে...';
-            submitBtn.disabled = true;
-
-            // নতুন সার্ভিস আইডি সঠিকভাবে বসানো হয়েছে
-            emailjs.sendForm('service_rwu2frp', 'template_qumfdbq', this)
-                .then(function() {
-                    form.style.display = 'none';
-                    successMsg.style.display = 'block';
-                }, function(error) {
-                    alert('দুঃখিত, তথ্য পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
-                    submitBtn.innerText = 'মেসেজ পাঠান';
-                    submitBtn.disabled = false;
-                });
-        });
+      items.forEach(item => {
+        let text = item.textContent.toLowerCase();
+        if (text.includes(input)) {
+          item.style.display = "flex";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
     </script>
 
 </body>
